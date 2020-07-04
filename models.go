@@ -37,5 +37,7 @@ func (record ApiRecord) Display(UserLat float32, UserLng float32) string {
 		Nombre de Velo disponibles: %d
 		Nombre de Places disponibles: %d
 		TPE Disponible: %s
-		Distance (en kilometres): %.2f`, record.Field.Name, record.Field.Address, record.Field.BikeAvailable, record.Field.SpotAvailable, record.Field.State, distance)
+		Distance (en kilometres): %.2f
+		Itinéraire: https://www.google.com/maps?q=%f,%f`,
+		record.Field.Name, record.Field.Address, record.Field.BikeAvailable, record.Field.SpotAvailable, record.Field.State, distance, lat, lng)
 }
