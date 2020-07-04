@@ -40,15 +40,18 @@ func main() {
 		if !m.Private() {
 			return
 		}
-		b.Send(m.Sender, "Merci de nous envoyer votre localisation!", menu)
+		b.Send(m.Sender, "Please send your location!", menu)
 	})
 	b.Handle(tb.OnLocation, func(m *tb.Message) {
 		res := get_closest_bike(BASE_URL, m.Location.Lat, m.Location.Lng)
-		msg := "Liste des Stations disponibles dans un rayon de 1km: "
+		msg := "Liste of stations available within 1km: "
 		for _, elem := range res.Result {
 			msg = fmt.Sprintf("%s\n\n%s", msg, elem.Display(m.Location.Lat, m.Location.Lng))
 		}
 		b.Send(m.Sender, msg)
+	})
+	b.Handle(tb.OnText, func(m *tb.Message) {
+		b.Send(m.Sender, "Command not found. Please use /start to get your bike!")
 	})
 	b.Start()
 }

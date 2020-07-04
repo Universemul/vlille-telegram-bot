@@ -33,11 +33,11 @@ func (record ApiRecord) Display(UserLat float32, UserLng float32) string {
 	lat := record.Geometry.Coordinates[1]
 	lng := record.Geometry.Coordinates[0]
 	distance := compute_distance(lat, lng, float64(UserLat), float64(UserLng), "K")
-	return fmt.Sprintf(`Station %s rue %s
-		Nombre de Velo disponibles: %d
-		Nombre de Places disponibles: %d
-		TPE Disponible: %s
-		Distance (en kilometres): %.2f
-		Itinéraire: https://www.google.com/maps?q=%f,%f`,
+	return fmt.Sprintf(`Station %s street %s
+		Number of bikes available: %d
+		Number of spot available: %d
+		CreditCard available: %s
+		Distance (in km): %.2f
+		Itinerary: https://www.google.com/maps?q=%f,%f`,
 		record.Field.Name, record.Field.Address, record.Field.BikeAvailable, record.Field.SpotAvailable, record.Field.State, distance, lat, lng)
 }
