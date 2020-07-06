@@ -35,7 +35,7 @@ func (record ApiRecord) Display(UserLat float32, UserLng float32) string {
 	distance := compute_distance(lat, lng, float64(UserLat), float64(UserLng), "K")
 	return fmt.Sprintf(`Station %s street %s
 		Number of bikes available: %d
-		Number of spot available: %d
+		Number of spots available: %d
 		CreditCard available: %s
 		Distance (in km): %.2f
 		Itinerary: https://www.google.com/maps?q=%f,%f`,
